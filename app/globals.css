@@ -1,0 +1,882 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ───────────────────────────────────────────────────────── */
+:root {
+  --bg:           #f5f0e8;
+  --bg-dark:      #ede7d9;
+  --bg-card:      #faf7f1;
+  --ink:          #2c2417;
+  --ink-light:    #5a4f3e;
+  --accent:       #7a4e2d;
+  --accent-light: #b07d54;
+  --string:       #8b6f47;
+  --perfect:      #2e6b4f;
+  --good:         #7a5c1e;
+  --miss:         #8b2e2e;
+  --chip-bg:      #f0ebe0;
+  --chip-border:  #c4a97a;
+  --shadow:       rgba(44,36,23,0.13);
+
+  --font: 'Hiragino Mincho ProN', 'Yu Mincho', 'ヒラギノ明朝 ProN', Georgia, serif;
+  --card-w: 360px;
+}
+
+/* ─── Reset ───────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; font-family: var(--font); background: var(--bg); color: var(--ink); -webkit-tap-highlight-color: transparent; user-select: none; }
+main { height: 100svh; overflow: hidden; display: flex; justify-content: center; }
+
+/* ─── Card wrapper ────────────────────────────────────────────────────────── */
+/* Both screens are centered columns, max-width = --card-w */
+.screen-center, .top-root, .gr-root {
+  width: 100%;
+  max-width: var(--card-w);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.screen-center {
+  justify-content: center;
+  gap: 1.1rem;
+  padding: 2rem 1.25rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* ─── Top screen ──────────────────────────────────────────────────────────── */
+.top-root {
+  height: 100%;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.top-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.25rem 2rem;
+  gap: 1.25rem;
+}
+
+.top-header {
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--chip-border);
+}
+
+.dojo-mark {
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  width: 2.8rem; height: 2.8rem;
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  font-size: 1.4rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.top-title {
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+}
+
+.top-sub {
+  font-size: 0.7rem;
+  color: var(--ink-light);
+  letter-spacing: 0.2em;
+  margin-top: 0.2rem;
+}
+
+.top-intro-text {
+  font-size: 0.82rem;
+  line-height: 1.9;
+  color: var(--ink-light);
+  letter-spacing: 0.04em;
+}
+
+/* Shelf card */
+.shelf-card {
+  background: var(--bg-card);
+  border: 1px solid var(--chip-border);
+  border-radius: 8px;
+  padding: 1.1rem 1.1rem 0.9rem;
+  cursor: pointer;
+  transition: transform 0.13s, box-shadow 0.13s;
+  box-shadow: 0 2px 8px var(--shadow);
+  width: 100%;
+  position: relative;
+}
+
+.shelf-card:active { transform: scale(0.98); }
+
+.card-track-id {
+  font-size: 0.62rem;
+  color: var(--accent-light);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.2rem;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+}
+
+.card-desc {
+  font-size: 0.75rem;
+  color: var(--ink-light);
+  line-height: 1.7;
+  margin-bottom: 0.6rem;
+}
+
+.card-footer {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.tag {
+  font-size: 0.62rem;
+  color: var(--accent);
+  border: 1px solid var(--accent-light);
+  border-radius: 3px;
+  padding: 0.08rem 0.38rem;
+  letter-spacing: 0.04em;
+}
+
+.card-phrase-block { margin-top: 0.5rem; }
+
+.card-phrase-label {
+  font-size: 0.62rem;
+  color: var(--ink-light);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.4rem;
+}
+
+.card-phrase-grid {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.card-note {
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  width: 1.85rem; height: 1.85rem;
+  border: 1px solid var(--chip-border);
+  border-radius: 50%;
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  background: var(--bg);
+}
+
+.card-best {
+  position: absolute;
+  top: 0.85rem; right: 0.85rem;
+  text-align: right;
+}
+
+.best-label {
+  display: block;
+  font-size: 0.58rem;
+  color: var(--ink-light);
+  letter-spacing: 0.12em;
+}
+
+.best-score {
+  font-size: 1.05rem;
+  color: var(--accent);
+}
+
+.top-start-btn { width: 100%; }
+
+.top-footer {
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--ink-light);
+  letter-spacing: 0.08em;
+  padding-top: 0.25rem;
+}
+
+/* ─── Idle / common screens ───────────────────────────────────────────────── */
+.title-block { text-align: center; }
+
+.subtitle {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  color: var(--ink-light);
+  margin-bottom: 0.4rem;
+}
+
+.track-title {
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.35rem;
+}
+
+.track-meta {
+  font-size: 0.7rem;
+  color: var(--ink-light);
+  letter-spacing: 0.07em;
+}
+
+.idle-desc {
+  font-size: 0.8rem;
+  color: var(--ink-light);
+  line-height: 1.85;
+  letter-spacing: 0.04em;
+  text-align: center;
+  max-width: 28rem;
+}
+
+.idle-hint {
+  font-size: 0.75rem;
+  color: var(--ink-light);
+  letter-spacing: 0.08em;
+  text-align: center;
+  opacity: 0.75;
+}
+
+.idle-open-note {
+  font-size: 0.75rem;
+  color: var(--ink-light);
+  letter-spacing: 0.06em;
+  text-align: center;
+  opacity: 0.8;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--chip-border);
+  border-radius: 4px;
+  background: var(--bg-card);
+}
+
+.phrase-preview {
+  background: var(--bg-card);
+  border: 1px solid var(--chip-border);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  width: 100%;
+}
+
+.phrase-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: var(--ink-light);
+  margin-bottom: 0.6rem;
+}
+
+.phrase-notes {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.phrase-note {
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  width: 2rem; height: 2rem;
+  border: 1px solid var(--chip-border);
+  border-radius: 50%;
+  font-size: 0.95rem;
+  color: var(--ink-light);
+  background: var(--bg);
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────────────────── */
+.btn-primary {
+  background: var(--accent);
+  color: #faf6ee;
+  border: none;
+  border-radius: 6px;
+  padding: 0.72rem 2.2rem;
+  font-family: var(--font);
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: background 0.14s, transform 0.1s;
+  width: 100%;
+  max-width: 280px;
+}
+
+.btn-primary:active { background: var(--ink); transform: scale(0.97); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-light);
+  border: 1px solid var(--chip-border);
+  border-radius: 6px;
+  padding: 0.58rem 2rem;
+  font-family: var(--font);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: border-color 0.14s, transform 0.1s;
+  width: 100%;
+  max-width: 280px;
+}
+
+.btn-ghost:active { border-color: var(--accent); transform: scale(0.97); }
+
+/* お手本再生中 */
+.btn-ghost--active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(122,78,45,0.06);
+}
+
+
+
+/* ─── Tuning panel ────────────────────────────────────────────────────────── */
+.tuning-wrap { width: 100%; text-align: center; }
+
+.tuning-toggle-btn {
+  background: none; border: none;
+  color: var(--ink-light); font-size: 0.7rem;
+  letter-spacing: 0.1em; cursor: pointer;
+  font-family: var(--font); padding: 0.3rem 0.5rem; opacity: 0.65;
+}
+.tuning-toggle-btn:hover { opacity: 1; }
+
+.tuning-panel {
+  margin-top: 0.5rem;
+  background: var(--bg-card); border: 1px solid var(--chip-border);
+  border-radius: 8px; padding: 0.85rem 1rem;
+  display: flex; flex-direction: column; gap: 0.9rem; text-align: left;
+}
+.tuning-row  { display: flex; flex-direction: column; gap: 0.18rem; }
+.tuning-text { display: flex; flex-direction: column; gap: 0.1rem; }
+.tuning-name { font-size: 0.78rem; color: var(--ink); letter-spacing: 0.05em; }
+.tuning-desc { font-size: 0.62rem; color: var(--ink-light); }
+.tuning-ctrl { display: flex; align-items: center; gap: 0.55rem; margin-top: 0.25rem; }
+.tuning-btn {
+  background: var(--bg-dark); border: 1px solid var(--chip-border);
+  border-radius: 4px; padding: 0.28rem 0.7rem;
+  font-size: 0.75rem; font-family: var(--font); color: var(--ink);
+  cursor: pointer; transition: background 0.12s;
+}
+.tuning-btn:hover    { background: var(--chip-border); }
+.tuning-btn:active   { background: var(--accent); color: #faf6ee; }
+.tuning-btn:disabled { opacity: 0.35; cursor: default; }
+.tuning-val { font-size: 0.78rem; color: var(--accent); min-width: 3.5rem; text-align: center; opacity: 0.8; }
+
+/* ─── Game screen ─────────────────────────────────────────────────────────── */
+.gr-root {
+  height: 100%;
+  background: linear-gradient(180deg, #ede7d9 0%, #f5f0e8 100%);
+}
+
+.play-card { width: 100%; height: 100%; display: flex; flex-direction: column; }
+
+/* HUD */
+.hud {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.6rem 1rem 0.3rem; flex-shrink: 0;
+}
+.hud-score { display: flex; flex-direction: column; min-width: 4rem; }
+.hud-label { font-size: 0.5rem; letter-spacing: 0.18em; color: var(--ink-light); }
+.hud-value { font-size: 1.15rem; color: var(--ink); line-height: 1.1; }
+.hud-mid   { flex: 1; display: flex; justify-content: center; }
+
+.combo-badge {
+  font-size: 0.72rem; color: var(--accent); letter-spacing: 0.14em;
+  border: 1px solid var(--accent-light); border-radius: 4px;
+  padding: 0.1rem 0.45rem; animation: combo-pop 0.18s ease-out;
+}
+@keyframes combo-pop {
+  from { transform: scale(0.8); opacity: 0.5; }
+  to   { transform: scale(1);   opacity: 1;   }
+}
+
+
+
+/* ─── Lane ────────────────────────────────────────────────────────────────── */
+.lane {
+  flex: 1; position: relative; overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 105%, rgba(122,78,45,0.04) 0%, transparent 60%),
+    var(--bg);
+}
+
+/*
+ * MAP GEOMETRY — synced with constants.ts: MAP_PAD_BOT=4, MAP_ROW_H=14
+ * flex-end: upper(合)=bottom(89%), middle(四)=75%, lower(工)=top(61%)
+ */
+.map-layer {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 4%;
+  pointer-events: none;
+}
+
+/* Vertical separator: open | pressed — spans all 3 rows */
+.map-layer::before {
+  content: '';
+  position: absolute;
+  left: calc(25% + 0.5rem);
+  bottom: 4%;
+  height: calc(3 * 14%);
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--chip-border) 6%,
+    var(--chip-border) 94%,
+    transparent 100%
+  );
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 2;
+}
+.map-row {
+  flex: 0 0 14%; /* MAP_ROW_H */
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.str-line {
+  position: absolute; left: 0; right: 0; top: 50%;
+  transform: translateY(-50%); pointer-events: none;
+}
+.str-line--lower  { height: 1.5px; background: linear-gradient(90deg, transparent 3%, var(--string) 10%, var(--string) 90%, transparent 97%); opacity: 0.24; }
+.str-line--middle { height: 2px;   background: linear-gradient(90deg, transparent 3%, var(--string) 10%, var(--string) 90%, transparent 97%); opacity: 0.26; }
+.str-line--upper  { height: 2px;   background: linear-gradient(90deg, transparent 3%, var(--string) 10%, var(--string) 90%, transparent 97%); opacity: 0.22; }
+
+/* ── String ring: fixed map string flashes on open-note judgment ────────────
+ * Applied dynamically to the str-line of the judged row.
+ * Uses scaleY (grows from centre) + box-shadow for visible glow.
+ * transform-origin: center so the line expands symmetrically.
+ */
+.str-line--ring-perfect {
+  transform-origin: center;
+  animation: str-ring-perfect 480ms ease-out forwards;
+}
+@keyframes str-ring-perfect {
+  0%   { transform: scaleY(1);  opacity: 0.24;
+         filter: none; }
+  20%  { transform: scaleY(5);  opacity: 1;
+         background: linear-gradient(90deg, transparent 3%, var(--perfect) 12%, var(--perfect) 88%, transparent 97%);
+         filter: drop-shadow(0 0 6px rgba(46,107,79,0.9)) drop-shadow(0 0 14px rgba(46,107,79,0.5)); }
+  55%  { transform: scaleY(3);  opacity: 0.7;
+         background: linear-gradient(90deg, transparent 3%, rgba(46,107,79,0.6) 12%, rgba(46,107,79,0.6) 88%, transparent 97%); }
+  100% { transform: scaleY(1);  opacity: 0;
+         filter: none; }
+}
+
+.str-line--ring-good {
+  transform-origin: center;
+  animation: str-ring-good 440ms ease-out forwards;
+}
+@keyframes str-ring-good {
+  0%   { transform: scaleY(1);  opacity: 0.24; filter: none; }
+  20%  { transform: scaleY(4);  opacity: 1;
+         background: linear-gradient(90deg, transparent 3%, var(--good) 12%, var(--good) 88%, transparent 97%);
+         filter: drop-shadow(0 0 5px rgba(122,92,30,0.85)) drop-shadow(0 0 10px rgba(122,92,30,0.4)); }
+  55%  { transform: scaleY(2.5); opacity: 0.65;
+         background: linear-gradient(90deg, transparent 3%, rgba(122,92,30,0.55) 12%, rgba(122,92,30,0.55) 88%, transparent 97%); }
+  100% { transform: scaleY(1);  opacity: 0; filter: none; }
+}
+
+.str-line--ring-miss {
+  transform-origin: center;
+  animation: str-ring-miss 500ms ease-out forwards;
+}
+@keyframes str-ring-miss {
+  0%   { transform: scaleY(1) translateX(0);  opacity: 0.24; filter: none; }
+  15%  { transform: scaleY(4) translateX(4px); opacity: 1;
+         background: linear-gradient(90deg, transparent 3%, var(--miss) 12%, var(--miss) 88%, transparent 97%);
+         filter: drop-shadow(0 0 5px rgba(139,46,46,0.9)); }
+  30%  { transform: scaleY(3.5) translateX(-4px); }
+  48%  { transform: scaleY(2.5) translateX(2px); opacity: 0.7;
+         background: linear-gradient(90deg, transparent 3%, rgba(139,46,46,0.6) 12%, rgba(139,46,46,0.6) 88%, transparent 97%); }
+  70%  { transform: scaleY(1.5) translateX(-1px); opacity: 0.4; }
+  100% { transform: scaleY(1)   translateX(0);   opacity: 0; filter: none; }
+}
+
+.map-chip {
+  display: flex; align-items: center; justify-content: center;
+  width: 2.3rem; height: 2.3rem;
+  border-radius: 50%;
+  font-size: 0.92rem;
+  color: var(--ink);
+  background: var(--chip-bg);
+  border: 1.5px solid var(--chip-border);
+  opacity: 0.72;
+  position: relative; z-index: 1;
+  margin: 0 auto;
+}
+
+.map-chip--placeholder {
+  visibility: hidden;
+  pointer-events: none;
+  border: none; background: none; box-shadow: none;
+}
+/* Open-string map chip: rounded rect — same family as open-note-label */
+.map-chip--open {
+  opacity: 0.68;
+  border-style: solid;
+  border-radius: 0.4rem;    /* rounded rect, matching open-note-label */
+  width: 2.4rem;
+  height: 1.7rem;
+  font-size: 0.88rem;
+}
+.map-chip--landing {
+  opacity: 1;
+  border: 2.5px solid var(--accent);
+  color: var(--accent);
+  background: rgba(122,78,45,0.1);
+  animation: chip-pulse 0.75s ease-in-out infinite;
+}
+@keyframes chip-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(122,78,45,0.15); }
+  50%       { box-shadow: 0 0 0 5px rgba(122,78,45,0.32); }
+}
+
+/* Pressed chip dimmed when open note on same row is active */
+.map-chip--dim {
+  opacity: 0.28;
+  transition: opacity 0.2s;
+}
+
+/* Note layer */
+.note-layer { position: absolute; inset: 0; pointer-events: none; }
+
+/* Falling note — slightly smaller than before to match map chip better */
+.fall-note {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 2.5rem; height: 2.5rem;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.05rem; color: var(--ink);
+  background: var(--bg-card);
+  border: 2.5px solid var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 3px 10px var(--shadow), 0 0 0 2px rgba(122,78,45,0.1);
+  z-index: 10;
+}
+
+/* Active (next note to hit) */
+.fall-note--active {
+  box-shadow: 0 4px 14px rgba(122,78,45,0.4), 0 0 0 4px rgba(122,78,45,0.2);
+  transform: translate(-50%, -50%) scale(1.07);
+}
+
+/* Open-string falling note: wide horizontal capsule spanning the open col area.
+ * The circle part (left) is the judgment target; the tail shows "this is an open string".
+ * transform: translate(-50%,-50%) is the default for all fall-notes,
+ * so positioning is still based on the left-edge circle centre.
+ * We offset the element rightward so the circle lands at the target x.
+ */
+.fall-note--open-bar {
+  width: 10rem !important;
+  height: 2rem !important;
+  border-radius: 1rem !important;
+  transform: translate(-1rem, -50%) !important;
+  /* Layout handled by open-note children */
+  padding: 0;
+  background: transparent !important;
+  border: none;
+  box-shadow: none;
+  gap: 0;
+  overflow: visible;
+}
+/* Active open-bar note */
+.fall-note--open-bar.fall-note--active {
+  box-shadow: 0 4px 14px rgba(122,78,45,0.38), 0 0 0 3px rgba(122,78,45,0.18);
+  transform: translate(-1rem, -50%) scale(1.02) !important;
+}
+
+
+/* ── Open note: internal structure ─────────────────────────────────────────
+ * .open-note wraps: open-note-label (character) + open-note-string (line).
+ * overflow:visible so box-shadow on the string can bleed outward.
+ */
+.open-note {
+  display: flex;
+  align-items: center;
+  width: 10rem;
+  height: 2rem;
+  overflow: visible;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Left cap: rounded rect — matches map-chip--open shape */
+.open-note-label {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 1.7rem;
+  font-size: 0.92rem;
+  color: var(--ink);
+  background: var(--bg-card);
+  border: 2px solid var(--accent);
+  border-radius: 0.4rem;         /* rounded rect — same family as map-chip--open */
+  box-shadow: 0 2px 6px var(--shadow);
+  z-index: 1;
+}
+
+/* The string line — fades to transparent on the right */
+.open-note-string {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(122,78,45,0.55) 0%,
+    rgba(122,78,45,0.25) 50%,
+    transparent 100%
+  );
+  border-radius: 1px;
+  align-self: center;
+  margin-right: 0;
+  transform-origin: left center;
+}
+
+/* Active: emphasise the rounded-rect cap */
+.fall-note--open-bar.fall-note--active .open-note-label {
+  box-shadow: 0 4px 14px rgba(122,78,45,0.38), 0 0 0 4px rgba(122,78,45,0.2);
+  border-color: var(--accent);
+}
+
+/* String judgment animations moved to str-line (see below) */
+
+/* ─── Shared burst effects (judgment-based, shape-independent) ──────────────
+ * Rendered as separate DOM elements on top of notes.
+ * Same visual for round notes and open-bar notes.
+ */
+
+/* Container: centred at the note's x/y */
+.burst-effect {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 20;
+  width: 0; height: 0; /* children use absolute positioning */
+}
+
+/* ── Ring ── */
+.burst-ring {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 2.8rem; height: 2.8rem;
+  border-radius: 50%;
+  border: 2.5px solid transparent;
+  opacity: 0;
+}
+
+.burst-effect--perfect .burst-ring {
+  border-color: var(--perfect);
+  animation: ring-expand-perfect 0.42s ease-out forwards;
+}
+.burst-effect--good .burst-ring {
+  border-color: var(--good);
+  animation: ring-expand-good 0.40s ease-out forwards;
+}
+.burst-effect--miss .burst-ring {
+  border-color: var(--miss);
+  animation: ring-expand-miss 0.38s ease-out forwards;
+}
+
+@keyframes ring-expand-perfect {
+  0%   { transform: translate(-50%,-50%) scale(0.6); opacity: 1;
+         box-shadow: 0 0 8px rgba(46,107,79,0.7); }
+  60%  { transform: translate(-50%,-50%) scale(1.8); opacity: 0.6;
+         box-shadow: 0 0 14px rgba(46,107,79,0.5); }
+  100% { transform: translate(-50%,-50%) scale(2.4); opacity: 0; }
+}
+
+@keyframes ring-expand-good {
+  0%   { transform: translate(-50%,-50%) scale(0.6); opacity: 0.9;
+         box-shadow: 0 0 6px rgba(122,92,30,0.6); }
+  60%  { transform: translate(-50%,-50%) scale(1.6); opacity: 0.5; }
+  100% { transform: translate(-50%,-50%) scale(2.1); opacity: 0; }
+}
+
+@keyframes ring-expand-miss {
+  0%   { transform: translate(-50%,-50%) scale(0.5) rotate(0deg);  opacity: 1;
+         box-shadow: 0 0 8px rgba(139,46,46,0.7); }
+  35%  { transform: translate(-50%,-50%) scale(1.4) rotate(-6deg); opacity: 0.7; }
+  65%  { transform: translate(-50%,-50%) scale(1.8) rotate(4deg);  opacity: 0.4; }
+  100% { transform: translate(-50%,-50%) scale(2.2) rotate(0deg);  opacity: 0; }
+}
+
+/* ── Particles (6 per burst) ── */
+.burst-particles {
+  position: absolute;
+  width: 0; height: 0;
+}
+
+.burst-particle {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 0.32rem; height: 0.32rem;
+  opacity: 0;
+}
+
+/* Perfect particles: green, scatter outward */
+.burst-effect--perfect .burst-particle { background: var(--perfect); }
+.burst-effect--perfect .burst-particle--0 { animation: particle-fly 0.45s 0.04s ease-out forwards; --dx:0;    --dy:-1.6rem; }
+.burst-effect--perfect .burst-particle--1 { animation: particle-fly 0.45s 0.06s ease-out forwards; --dx:1.4rem; --dy:-0.8rem; }
+.burst-effect--perfect .burst-particle--2 { animation: particle-fly 0.45s 0.04s ease-out forwards; --dx:1.4rem; --dy:0.8rem; }
+.burst-effect--perfect .burst-particle--3 { animation: particle-fly 0.45s 0.06s ease-out forwards; --dx:0;    --dy:1.6rem; }
+.burst-effect--perfect .burst-particle--4 { animation: particle-fly 0.45s 0.04s ease-out forwards; --dx:-1.4rem; --dy:0.8rem; }
+.burst-effect--perfect .burst-particle--5 { animation: particle-fly 0.45s 0.06s ease-out forwards; --dx:-1.4rem; --dy:-0.8rem; }
+
+/* Good particles: amber, smaller scatter */
+.burst-effect--good .burst-particle { background: var(--good); }
+.burst-effect--good .burst-particle--0 { animation: particle-fly 0.40s 0.03s ease-out forwards; --dx:0;    --dy:-1.2rem; }
+.burst-effect--good .burst-particle--1 { animation: particle-fly 0.40s 0.05s ease-out forwards; --dx:1.1rem; --dy:-0.6rem; }
+.burst-effect--good .burst-particle--2 { animation: particle-fly 0.40s 0.03s ease-out forwards; --dx:1.1rem; --dy:0.6rem; }
+.burst-effect--good .burst-particle--3 { animation: particle-fly 0.40s 0.05s ease-out forwards; --dx:0;    --dy:1.2rem; }
+.burst-effect--good .burst-particle--4 { animation: particle-fly 0.40s 0.03s ease-out forwards; --dx:-1.1rem; --dy:0.6rem; }
+.burst-effect--good .burst-particle--5 { animation: particle-fly 0.40s 0.05s ease-out forwards; --dx:-1.1rem; --dy:-0.6rem; }
+
+/* Miss particles: red, irregular scatter */
+.burst-effect--miss .burst-particle { background: var(--miss); width: 0.28rem; height: 0.28rem; }
+.burst-effect--miss .burst-particle--0 { animation: particle-fly 0.38s 0.02s ease-out forwards; --dx:-1.0rem; --dy:-1.3rem; }
+.burst-effect--miss .burst-particle--1 { animation: particle-fly 0.38s 0.06s ease-out forwards; --dx:1.2rem;  --dy:-0.9rem; }
+.burst-effect--miss .burst-particle--2 { animation: particle-fly 0.38s 0.03s ease-out forwards; --dx:1.3rem;  --dy:0.7rem; }
+.burst-effect--miss .burst-particle--3 { animation: particle-fly 0.38s 0.05s ease-out forwards; --dx:-0.8rem; --dy:1.2rem; }
+.burst-effect--miss .burst-particle--4 { animation: particle-fly 0.38s 0.02s ease-out forwards; --dx:-1.3rem; --dy:0.5rem; }
+.burst-effect--miss .burst-particle--5 { animation: particle-fly 0.38s 0.04s ease-out forwards; --dx:0.5rem;  --dy:1.4rem; }
+
+@keyframes particle-fly {
+  0%   { transform: translate(-50%,-50%) translate(0,0);                         opacity: 1; }
+  80%  { transform: translate(-50%,-50%) translate(var(--dx), var(--dy));         opacity: 0.6; }
+  100% { transform: translate(-50%,-50%) translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+}
+
+/* Countdown overlay */
+.cd-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.75rem;
+  background: rgba(245,240,232,0.6);
+  z-index: 50; pointer-events: none;
+}
+.cd-num {
+  font-size: 5.5rem; color: var(--accent);
+  letter-spacing: 0.04em; line-height: 1;
+  animation: cd-pop 0.38s ease-out;
+  text-shadow: 0 2px 12px rgba(122,78,45,0.3);
+}
+@keyframes cd-pop {
+  0%   { transform: scale(1.6); opacity: 0; }
+  55%  { transform: scale(0.92); opacity: 1; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+.cd-hint {
+  font-size: 0.78rem; color: var(--ink-light);
+  letter-spacing: 0.08em; line-height: 1.8;
+  text-align: center;
+}
+
+/* Feedback row */
+.feedback-row {
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.45rem; min-height: 2.4rem; padding: 0.2rem 1rem;
+}
+.fb-placeholder { font-size: 0.9rem; color: var(--bg-dark); }
+.fb-note        { font-size: 1.25rem; color: var(--ink); line-height: 1; }
+.fb-judgment    { font-size: 0.82rem; font-style: italic; letter-spacing: 0.1em; }
+.fb-judgment--perfect   { color: var(--perfect); }
+.fb-judgment--good      { color: var(--good);    }
+.fb-judgment--miss      { color: var(--miss);    }
+.fb-judgment--too-early { color: var(--ink-light); }
+.fb-judgment--none      { display: none; }
+
+.fb-detail              { font-size: 0.72rem; letter-spacing: 0.06em; }
+.fb-detail--perfect     { color: var(--perfect); }
+.fb-detail--good        { color: var(--good);    }
+.fb-detail--miss        { color: var(--miss);    }
+.fb-detail--too-early   { color: var(--ink-light); font-style: italic; }
+.fb-detail--none        { display: none; }
+
+/* Strike button */
+.strike-area {
+  flex-shrink: 0;
+  display: flex; justify-content: center;
+  padding: 0.35rem 1rem 0.9rem;
+}
+.strike-btn {
+  width: 5.5rem; height: 5.5rem; border-radius: 50%;
+  background: var(--accent); border: 2.5px solid var(--accent-light);
+  color: #faf6ee;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.05rem; cursor: pointer; font-family: var(--font);
+  box-shadow: 0 5px 16px rgba(122,78,45,0.38), 0 2px 4px rgba(44,36,23,0.18);
+  transition: transform 0.09s, box-shadow 0.09s, background 0.1s;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+.strike-btn:active {
+  transform: scale(0.88);
+  box-shadow: 0 2px 6px rgba(122,78,45,0.3);
+  background: var(--ink);
+}
+.strike-btn--dim { opacity: 0.38; cursor: default; box-shadow: none; }
+.strike-kanji { font-size: 1.4rem; letter-spacing: 0.1em; line-height: 1; }
+.strike-sub   { font-size: 0.45rem; opacity: 0.65; letter-spacing: 0.18em; }
+
+/* ─── Result screen ───────────────────────────────────────────────────────── */
+.result-block {
+  background: var(--bg-card);
+  border: 1px solid var(--chip-border);
+  border-radius: 10px;
+  padding: 1.6rem 1.75rem;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.result-grade {
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+.result-score {
+  font-size: 3rem;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.1rem;
+  line-height: 1;
+}
+
+.result-stats { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.28rem 0;
+  border-bottom: 1px solid var(--bg-dark);
+}
+
+.stat-row:last-child { border-bottom: none; }
+
+.stat-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-light);
+}
+
+.stat-label.perfect-color { color: var(--perfect); }
+.stat-label.good-color    { color: var(--good);    }
+.stat-label.miss-color    { color: var(--miss);    }
+
+.stat-val { font-size: 1rem; color: var(--ink); }
