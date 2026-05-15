@@ -486,18 +486,13 @@ main { height: 100svh; overflow: hidden; display: flex; justify-content: center;
 
 .str-line--ring-miss {
   transform-origin: center;
-  animation: str-ring-miss 500ms ease-out forwards;
+  animation: str-ring-miss 220ms ease-out forwards;
 }
 @keyframes str-ring-miss {
-  0%   { transform: scaleY(1) translateX(0);  opacity: 0.24; filter: none; }
-  15%  { transform: scaleY(4) translateX(4px); opacity: 1;
-         background: linear-gradient(90deg, transparent 3%, var(--miss) 12%, var(--miss) 88%, transparent 97%);
-         filter: drop-shadow(0 0 5px rgba(139,46,46,0.9)); }
-  30%  { transform: scaleY(3.5) translateX(-4px); }
-  48%  { transform: scaleY(2.5) translateX(2px); opacity: 0.7;
-         background: linear-gradient(90deg, transparent 3%, rgba(139,46,46,0.6) 12%, rgba(139,46,46,0.6) 88%, transparent 97%); }
-  70%  { transform: scaleY(1.5) translateX(-1px); opacity: 0.4; }
-  100% { transform: scaleY(1)   translateX(0);   opacity: 0; filter: none; }
+  0%   { transform: scaleY(1); opacity: 0.18; filter: none; }
+  35%  { transform: scaleY(1.45); opacity: 0.28;
+         background: linear-gradient(90deg, transparent 3%, rgba(120,112,102,0.28) 12%, rgba(120,112,102,0.28) 88%, transparent 97%); }
+  100% { transform: scaleY(1); opacity: 0; filter: none; }
 }
 
 .map-chip {
@@ -683,8 +678,8 @@ main { height: 100svh; overflow: hidden; display: flex; justify-content: center;
   animation: ring-expand-good 0.40s ease-out forwards;
 }
 .burst-effect--miss .burst-ring {
-  border-color: var(--miss);
-  animation: ring-expand-miss 0.38s ease-out forwards;
+  border-color: rgba(120,112,102,0.32);
+  animation: ring-expand-miss 0.22s ease-out forwards;
 }
 
 @keyframes ring-expand-perfect {
@@ -703,11 +698,10 @@ main { height: 100svh; overflow: hidden; display: flex; justify-content: center;
 }
 
 @keyframes ring-expand-miss {
-  0%   { transform: translate(-50%,-50%) scale(0.5) rotate(0deg);  opacity: 1;
-         box-shadow: 0 0 8px rgba(139,46,46,0.7); }
-  35%  { transform: translate(-50%,-50%) scale(1.4) rotate(-6deg); opacity: 0.7; }
-  65%  { transform: translate(-50%,-50%) scale(1.8) rotate(4deg);  opacity: 0.4; }
-  100% { transform: translate(-50%,-50%) scale(2.2) rotate(0deg);  opacity: 0; }
+  0%   { transform: translate(-50%,-50%) scale(0.5); opacity: 0.38;
+         box-shadow: none; }
+  60%  { transform: translate(-50%,-50%) scale(1.15); opacity: 0.2; }
+  100% { transform: translate(-50%,-50%) scale(1.35); opacity: 0; }
 }
 
 /* ── Particles (6 per burst) ── */
@@ -743,13 +737,17 @@ main { height: 100svh; overflow: hidden; display: flex; justify-content: center;
 .burst-effect--good .burst-particle--5 { animation: particle-fly 0.40s 0.05s ease-out forwards; --dx:-1.1rem; --dy:-0.6rem; }
 
 /* Miss particles: red, irregular scatter */
-.burst-effect--miss .burst-particle { background: var(--miss); width: 0.28rem; height: 0.28rem; }
-.burst-effect--miss .burst-particle--0 { animation: particle-fly 0.38s 0.02s ease-out forwards; --dx:-1.0rem; --dy:-1.3rem; }
-.burst-effect--miss .burst-particle--1 { animation: particle-fly 0.38s 0.06s ease-out forwards; --dx:1.2rem;  --dy:-0.9rem; }
-.burst-effect--miss .burst-particle--2 { animation: particle-fly 0.38s 0.03s ease-out forwards; --dx:1.3rem;  --dy:0.7rem; }
-.burst-effect--miss .burst-particle--3 { animation: particle-fly 0.38s 0.05s ease-out forwards; --dx:-0.8rem; --dy:1.2rem; }
-.burst-effect--miss .burst-particle--4 { animation: particle-fly 0.38s 0.02s ease-out forwards; --dx:-1.3rem; --dy:0.5rem; }
-.burst-effect--miss .burst-particle--5 { animation: particle-fly 0.38s 0.04s ease-out forwards; --dx:0.5rem;  --dy:1.4rem; }
+.burst-effect--miss .burst-particle {
+  background: rgba(120,112,102,0.35);
+  width: 0.18rem;
+  height: 0.18rem;
+}
+.burst-effect--miss .burst-particle--0 { animation: particle-fly 0.22s 0.01s ease-out forwards; --dx:-0.45rem; --dy:-0.5rem; }
+.burst-effect--miss .burst-particle--1 { animation: particle-fly 0.22s 0.02s ease-out forwards; --dx:0.5rem;  --dy:-0.35rem; }
+.burst-effect--miss .burst-particle--2 { animation: particle-fly 0.22s 0.01s ease-out forwards; --dx:0.45rem;  --dy:0.35rem; }
+.burst-effect--miss .burst-particle--3 { animation: particle-fly 0.22s 0.02s ease-out forwards; --dx:-0.35rem; --dy:0.45rem; }
+.burst-effect--miss .burst-particle--4 { display: none; }
+.burst-effect--miss .burst-particle--5 { display: none; }
 
 @keyframes particle-fly {
   0%   { transform: translate(-50%,-50%) translate(0,0);                         opacity: 1; }
