@@ -678,8 +678,8 @@ main { height: 100svh; overflow: hidden; display: flex; justify-content: center;
   animation: ring-expand-good 0.40s ease-out forwards;
 }
 .burst-effect--miss .burst-ring {
-  border-color: rgba(120,112,102,0.32);
-  animation: ring-expand-miss 0.22s ease-out forwards;
+  border-color: rgba(120,112,102,0.42);
+  animation: ring-expand-miss 0.26s ease-out forwards;
 }
 
 @keyframes ring-expand-perfect {
@@ -698,10 +698,10 @@ main { height: 100svh; overflow: hidden; display: flex; justify-content: center;
 }
 
 @keyframes ring-expand-miss {
-  0%   { transform: translate(-50%,-50%) scale(0.5); opacity: 0.38;
+  0%   { transform: translate(-50%,-50%) scale(0.55); opacity: 0.5;
          box-shadow: none; }
-  60%  { transform: translate(-50%,-50%) scale(1.15); opacity: 0.2; }
-  100% { transform: translate(-50%,-50%) scale(1.35); opacity: 0; }
+  60%  { transform: translate(-50%,-50%) scale(1.25); opacity: 0.28; }
+  100% { transform: translate(-50%,-50%) scale(1.5); opacity: 0; }
 }
 
 /* ── Particles (6 per burst) ── */
