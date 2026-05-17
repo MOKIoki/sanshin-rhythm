@@ -116,16 +116,63 @@ export const TRACKS: TrackDef[] = [
       START_OFFSET
     ),
   },
-  // ── 次のコースはここに追加 ──────────────────────────────────────────────────
-  // {
-  //   id: "next-course",
-  //   title: "...",
-  //   description: "...",
-  //   audioSrc: "/audio/next.wav",
-  //   defaultLeadMs: 3000,
-  //   defaultAudioOffsetSec: 1.0,
-  //   notes: buildNotes([...], BPM, START_OFFSET),
-  // },
+  {
+    id: "tinsagu-nu-hana",
+    title: "てぃんさぐぬ花",
+    description: "てぃんさぐぬ花の一節に、ゆっくりふれる稽古です。",
+    audioSrc: "/audio/tinsagu-nu-hana.m4a",
+    defaultLeadMs: 3000,
+    defaultAudioOffsetSec: 1.1,
+    notes: buildNotes(
+      [
+        // 1行目
+        { beat: 0, note: "中" },
+        { beat: 1, note: "工" },
+        { beat: 2, note: "尺" },
+        { beat: 2.5, note: "中" },
+        { beat: 3, note: "上" },
+
+        { beat: 4, note: "四" },
+        { beat: 5, note: "合" },
+        { beat: 5.5, note: "老" },
+        { beat: 6, note: "四" },
+        { beat: 7, note: "工" },
+
+        { beat: 8, note: "中" },
+        { beat: 9, note: "工" },
+        { beat: 10, note: "六" },
+        { beat: 11, note: "合" },
+
+        { beat: 12, note: "上" },
+        { beat: 13, note: "合" },
+        { beat: 14, note: "六" },
+        { beat: 15, note: "七" },
+
+        // 2行目
+        { beat: 16, note: "中" },
+        { beat: 17, note: "合" },
+        { beat: 18, note: "尺" },
+        { beat: 18.5, note: "中" },
+        { beat: 19, note: "上" },
+
+        { beat: 20, note: "四" },
+        { beat: 21, note: "合" },
+        { beat: 21.5, note: "老" },
+        { beat: 22, note: "四" },
+        { beat: 23, note: "工" },
+
+        { beat: 24, note: "中" },
+        { beat: 25, note: "工" },
+        { beat: 26, note: "尺" },
+        { beat: 26.5, note: "中" },
+        { beat: 27, note: "上" },
+
+        { beat: 28, note: "四" },
+      ],
+      80,
+      START_OFFSET
+    ),
+  },
 ];
 
 /** Convenience: first track (kept for any legacy reference during migration) */
