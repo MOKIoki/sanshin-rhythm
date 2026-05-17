@@ -57,7 +57,7 @@ export interface AudioGate {
 }
 
 // Volume levels
-const GATE_BASE    = 0.25;  // TEMP: audible background for timing check
+const GATE_BASE    = 0.0;   // background level (inaudible)
 const GATE_PERFECT = 1.0;   // Perfect: full volume
 const GATE_GOOD    = 0.85;  // Good: clearly audible but not perfect
 const GATE_PREVIEW = 1.0;   // お手本: full
