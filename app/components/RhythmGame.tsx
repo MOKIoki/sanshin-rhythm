@@ -657,6 +657,9 @@ export default function RhythmGame({ track, onBack: onBackOrig }: { track: Track
             30秒以内の小さな稽古です。<br />最後まで弾いて、合格点を目指します。
           </p>
           <p className="idle-open-note">工・四・合は、弦を押さえずに鳴らす音です。</p>
+          {track.id === "tinsagu-nu-hana" && (
+            <p className="idle-open-note">色のついた音は、半拍の「たたん」の合図です。</p>
+          )}
           <button className="btn-primary" onClick={startGame}>稽古をはじめる</button>
           <button className="btn-ghost" onClick={onBack}>← 戻る</button>
           {renderTuning()}
