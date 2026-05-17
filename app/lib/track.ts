@@ -122,7 +122,7 @@ export const TRACKS: TrackDef[] = [
     description: "沖縄で親しまれてきた教訓歌。半拍の「たたん」が入る、少し難しい稽古です。",
     audioSrc: "/audio/tinsagu-nu-hana.m4a",
     defaultLeadMs: 3000,
-    defaultAudioOffsetSec: 1.1,
+    defaultAudioOffsetSec: 0.3,
     notes: buildNotes(
       [
         // 1行目
