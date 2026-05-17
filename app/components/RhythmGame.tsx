@@ -489,6 +489,8 @@ export default function RhythmGame({ track, onBack: onBackOrig }: { track: Track
 
             const isOpen = n.type === "open";
             const isHalfBeat = Math.abs(n.beat % 1 - 0.5) < 0.001;
+            const startsHalfBeatPair = notes.some((m) => Math.abs(m.beat - (n.beat + 0.5)) < 0.001);
+            const isTatannNote = isHalfBeat || startsHalfBeatPair;
 
             // All judged notes: hide immediately
             // (burst-effect handles non-open visuals; string-ring handles open note visuals)
@@ -504,6 +506,7 @@ export default function RhythmGame({ track, onBack: onBackOrig }: { track: Track
                 <div key={n.id}
                   className={[
                     "fall-note fall-note--open-bar open-note",
+                    isTatannNote ? "fall-note--tatann" : "",
                     isHalfBeat ? "fall-note--half" : "",
                     isActive ? "fall-note--active" : "",
                   ].filter(Boolean).join(" ")}
@@ -517,7 +520,8 @@ export default function RhythmGame({ track, onBack: onBackOrig }: { track: Track
               <div key={n.id}
                 className={[
                   "fall-note",
-                  isHalfBeat ? "fall-note--half" : "",
+                  isTatannNote ? "fall-note--tatann" : "",
+                    isHalfBeat ? "fall-note--half" : "",
                   isActive ? "fall-note--active" : "",
                 ].filter(Boolean).join(" ")}
                 style={{ left: `${tgt.x}%`, top: `${y}%` }}>

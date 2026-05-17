@@ -895,3 +895,36 @@ main { height: 100svh; overflow: hidden; display: flex; justify-content: center;
 .fall-note--half {
   transform: translate(-50%, -50%) scale(0.94);
 }
+
+/* Tinsagu half-beat pair: show the "たたん" pair in peripheral vision */
+.fall-note--tatann:not(.fall-note--open-bar) {
+  background: #efd39a;
+  border-color: rgba(122,78,45,0.9);
+  box-shadow: 0 0 0 2px rgba(190,140,72,0.18), 0 8px 18px rgba(122,78,45,0.14);
+  color: var(--ink);
+}
+
+.fall-note--tatann.fall-note--open-bar .open-note-label {
+  background: #efd39a;
+  border-color: rgba(122,78,45,0.9);
+  box-shadow: 0 0 0 2px rgba(190,140,72,0.16);
+}
+
+.fall-note--tatann.fall-note--open-bar .open-note-string {
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    rgba(122,78,45,0.82) 0%,
+    rgba(122,78,45,0.46) 52%,
+    transparent 100%
+  );
+}
+
+/* The second note of the pair keeps a small connector cue. */
+.fall-note--half:not(.fall-note--open-bar)::before {
+  background: rgba(122,78,45,0.82);
+}
+
+.fall-note--half:not(.fall-note--open-bar)::after {
+  background: rgba(122,78,45,0.82);
+}
