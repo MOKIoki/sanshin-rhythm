@@ -121,7 +121,7 @@ export const TRACKS: TrackDef[] = [
     title: "てぃんさぐぬ花",
     description: "沖縄で親しまれてきた教訓歌。半拍の「たたん」が入る、少し難しい稽古です。",
     audioSrc: "/audio/tinsagu-nu-hana.m4a",
-    defaultLeadMs: 3000,
+    defaultLeadMs: 3600,
     defaultAudioOffsetSec: 0.7,
     notes: buildNotes(
       [
