@@ -169,7 +169,7 @@ export const TRACKS: TrackDef[] = [
 
         { beat: 28, note: "四" },
       ],
-      80,
+      84,
       START_OFFSET
     ),
   },
