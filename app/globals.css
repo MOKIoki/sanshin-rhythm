@@ -928,3 +928,9 @@ main { height: 100svh; overflow: hidden; display: flex; justify-content: center;
 .fall-note--half:not(.fall-note--open-bar)::after {
   background: rgba(122,78,45,0.82);
 }
+
+/* Half-beat cue: color is enough; remove misleading connector marks */
+.fall-note--half::before,
+.fall-note--half::after {
+  display: none;
+}
