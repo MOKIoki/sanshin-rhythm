@@ -878,3 +878,20 @@ main { height: 100svh; overflow: hidden; display: flex; justify-content: center;
 .stat-label.miss-color    { color: var(--miss);    }
 
 .stat-val { font-size: 1rem; color: var(--ink); }
+
+/* Half-beat notes: a quiet cue for the "たたん" rhythm */
+.fall-note--half::before {
+  content: "";
+  position: absolute;
+  left: -0.55rem;
+  top: 50%;
+  width: 0.42rem;
+  height: 1px;
+  transform: translateY(-50%);
+  border-top: 1px dotted rgba(120,112,102,0.45);
+  pointer-events: none;
+}
+
+.fall-note--half {
+  transform: translate(-50%, -50%) scale(0.94);
+}
