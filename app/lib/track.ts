@@ -96,7 +96,7 @@ export const TRACKS: TrackDef[] = [
     description: "普通の曲で使う三線の基本音を、一音一拍でたどって「弾く」練習です。",
     audioSrc: "/audio/sample.wav",
     defaultLeadMs: 3000,
-    defaultAudioOffsetSec: 1.3,
+    defaultAudioOffsetSec: 0.8,
     notes: buildNotes(
       [
         { beat: 0,  note: "合" },
