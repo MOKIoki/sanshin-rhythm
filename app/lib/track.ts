@@ -86,11 +86,13 @@ function buildNotes(
 function buildTimedNotes(
   notes: { timeSeconds: number; note: string; tatann?: boolean }[],
   audioOffsetSec: number,
-  bpm: number = BPM
+  bpm: number = BPM,
+  timingAdjustSec: number = 0
 ): NoteData[] {
   const spb = 60 / bpm;
 
   return notes.map((n, i) => {
+    const adjustedTimeSeconds = n.timeSeconds + timingAdjustSec;
     const m = NOTE_MAP[n.note] ?? {
       row: "middle" as StringRow,
       rowLabel: "中の弦",
@@ -100,9 +102,9 @@ function buildTimedNotes(
 
     return {
       id: i,
-      beat: (n.timeSeconds - audioOffsetSec) / spb,
+      beat: (adjustedTimeSeconds - audioOffsetSec) / spb,
       note: n.note,
-      timeSeconds: n.timeSeconds,
+      timeSeconds: adjustedTimeSeconds,
       row: m.row,
       position: m.position,
       type: m.type,
@@ -196,7 +198,9 @@ export const TRACKS: TrackDef[] = [
 
         { timeSeconds: 25.108, note: "四" },
       ],
-      0.7
+      0.7,
+      BPM,
+      -0.10
     ),
   },
 ];
