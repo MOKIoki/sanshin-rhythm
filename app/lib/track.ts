@@ -83,6 +83,18 @@ function buildNotes(
   });
 }
 
+function buildTimedNotes(
+  notes: { timeSeconds: number; note: string }[]
+): NoteData[] {
+  return notes.map((n, i) => ({
+    id: `timed-${i}`,
+    beat: n.timeSeconds,
+    timeSeconds: n.timeSeconds,
+    note: n.note,
+    type: OPEN_NOTES.includes(n.note) ? "open" : "normal",
+  }));
+}
+
 // ─── TRACKS ───────────────────────────────────────────────────────────────────
 // To add a new course:
 //   1. Add audio file to public/audio/
@@ -123,54 +135,50 @@ export const TRACKS: TrackDef[] = [
     audioSrc: "/audio/tinsagu-nu-hana.m4a",
     defaultLeadMs: 3600,
     defaultAudioOffsetSec: 0.7,
-    notes: buildNotes(
+    notes: buildTimedNotes(
       [
-        // 1行目
-        { beat: 0, note: "中" },
-        { beat: 1, note: "工" },
-        { beat: 2, note: "尺" },
-        { beat: 2.5, note: "中" },
-        { beat: 3, note: "上" },
+        { timeSeconds: 0.850, note: "中" },
+        { timeSeconds: 1.667, note: "工" },
+        { timeSeconds: 2.449, note: "尺" },
+        { timeSeconds: 3.299, note: "中" },
+        { timeSeconds: 4.150, note: "上" },
 
-        { beat: 4, note: "四" },
-        { beat: 5, note: "合" },
-        { beat: 5.5, note: "老" },
-        { beat: 6, note: "四" },
-        { beat: 7, note: "工" },
+        { timeSeconds: 4.966, note: "四" },
+        { timeSeconds: 5.340, note: "合" },
+        { timeSeconds: 5.748, note: "老" },
+        { timeSeconds: 6.667, note: "四" },
+        { timeSeconds: 7.564, note: "工" },
 
-        { beat: 8, note: "中" },
-        { beat: 9, note: "工" },
-        { beat: 10, note: "六" },
-        { beat: 11, note: "合" },
+        { timeSeconds: 8.387, note: "中" },
+        { timeSeconds: 9.183, note: "工" },
+        { timeSeconds: 10.112, note: "六" },
+        { timeSeconds: 10.962, note: "合" },
 
-        { beat: 12, note: "上" },
-        { beat: 13, note: "合" },
-        { beat: 14, note: "六" },
-        { beat: 15, note: "七" },
+        { timeSeconds: 11.784, note: "上" },
+        { timeSeconds: 12.607, note: "合" },
+        { timeSeconds: 13.509, note: "六" },
+        { timeSeconds: 14.412, note: "七" },
 
-        // 2行目
-        { beat: 16, note: "中" },
-        { beat: 17, note: "合" },
-        { beat: 18, note: "尺" },
-        { beat: 18.5, note: "中" },
-        { beat: 19, note: "上" },
+        { timeSeconds: 15.235, note: "中" },
+        { timeSeconds: 16.111, note: "合" },
+        { timeSeconds: 16.509, note: "尺" },
+        { timeSeconds: 16.933, note: "中" },
+        { timeSeconds: 17.809, note: "上" },
 
-        { beat: 20, note: "四" },
-        { beat: 21, note: "合" },
-        { beat: 21.5, note: "老" },
-        { beat: 22, note: "四" },
-        { beat: 23, note: "工" },
+        { timeSeconds: 18.605, note: "四" },
+        { timeSeconds: 19.481, note: "合" },
+        { timeSeconds: 20.384, note: "老" },
+        { timeSeconds: 20.750, note: "四" },
+        { timeSeconds: 20.995, note: "工" },
 
-        { beat: 24, note: "中" },
-        { beat: 25, note: "工" },
-        { beat: 26, note: "尺" },
-        { beat: 26.5, note: "中" },
-        { beat: 27, note: "上" },
+        { timeSeconds: 21.260, note: "中" },
+        { timeSeconds: 22.162, note: "工" },
+        { timeSeconds: 23.038, note: "尺" },
+        { timeSeconds: 23.462, note: "中" },
+        { timeSeconds: 23.967, note: "上" },
 
-        { beat: 28, note: "四" },
-      ],
-      84,
-      START_OFFSET
+        { timeSeconds: 25.108, note: "四" },
+      ]
     ),
   },
 ];
