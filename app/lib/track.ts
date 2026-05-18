@@ -200,7 +200,7 @@ export const TRACKS: TrackDef[] = [
       ],
       0.7,
       BPM,
-      -0.020
+      -0.018
     ),
   },
 ];
