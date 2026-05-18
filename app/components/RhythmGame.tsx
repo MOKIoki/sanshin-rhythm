@@ -101,6 +101,7 @@ interface LiveNote {
   id: number; beat: number; note: string; timeSeconds: number;
   row: string; position: number; type: string; rowLabel: string;
   state: NoteState;
+  tatann?: boolean;
 }
 
 type JudgmentResult = "perfect" | "good" | "miss" | "too-early" | null;
