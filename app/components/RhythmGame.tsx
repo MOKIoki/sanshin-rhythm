@@ -488,9 +488,8 @@ export default function RhythmGame({ track, onBack: onBackOrig }: { track: Track
             const tgt = getNotePos(n.note);
 
             const isOpen = n.type === "open";
-            const isHalfBeat = Math.abs(n.beat % 1 - 0.5) < 0.001;
-            const startsHalfBeatPair = notes.some((m) => Math.abs(m.beat - (n.beat + 0.5)) < 0.001);
-            const isTatannNote = isHalfBeat || startsHalfBeatPair;
+            const isHalfBeat = Boolean(n.tatann);
+            const isTatannNote = Boolean(n.tatann);
 
             // All judged notes: hide immediately
             // (burst-effect handles non-open visuals; string-ring handles open note visuals)

@@ -79,12 +79,13 @@ function buildNotes(
       position: m.position,
       type: m.type,
       rowLabel: m.rowLabel,
+      tatann: n.tatann,
     };
   });
 }
 
 function buildTimedNotes(
-  notes: { timeSeconds: number; note: string }[],
+  notes: { timeSeconds: number; note: string; tatann?: boolean }[],
   audioOffsetSec: number,
   bpm: number = BPM
 ): NoteData[] {
@@ -107,6 +108,7 @@ function buildTimedNotes(
       position: m.position,
       type: m.type,
       rowLabel: m.rowLabel,
+      tatann: n.tatann,
     };
   });
 }
@@ -155,13 +157,13 @@ export const TRACKS: TrackDef[] = [
       [
         { timeSeconds: 0.850, note: "中" },
         { timeSeconds: 1.667, note: "工" },
-        { timeSeconds: 2.449, note: "尺" },
-        { timeSeconds: 3.299, note: "中" },
+        { timeSeconds: 2.449, note: "尺", tatann: true },
+        { timeSeconds: 3.299, note: "中", tatann: true },
         { timeSeconds: 4.150, note: "上" },
 
         { timeSeconds: 4.966, note: "四" },
-        { timeSeconds: 5.340, note: "合" },
-        { timeSeconds: 5.748, note: "老" },
+        { timeSeconds: 5.340, note: "合", tatann: true },
+        { timeSeconds: 5.748, note: "老", tatann: true },
         { timeSeconds: 6.667, note: "四" },
         { timeSeconds: 7.564, note: "工" },
 
@@ -177,20 +179,20 @@ export const TRACKS: TrackDef[] = [
 
         { timeSeconds: 15.235, note: "中" },
         { timeSeconds: 16.111, note: "合" },
-        { timeSeconds: 16.509, note: "尺" },
-        { timeSeconds: 16.933, note: "中" },
+        { timeSeconds: 16.509, note: "尺", tatann: true },
+        { timeSeconds: 16.933, note: "中", tatann: true },
         { timeSeconds: 17.809, note: "上" },
 
         { timeSeconds: 18.605, note: "四" },
-        { timeSeconds: 19.481, note: "合" },
-        { timeSeconds: 20.384, note: "老" },
+        { timeSeconds: 19.481, note: "合", tatann: true },
+        { timeSeconds: 20.384, note: "老", tatann: true },
         { timeSeconds: 20.750, note: "四" },
         { timeSeconds: 20.995, note: "工" },
 
         { timeSeconds: 21.260, note: "中" },
         { timeSeconds: 22.162, note: "工" },
-        { timeSeconds: 23.038, note: "尺" },
-        { timeSeconds: 23.462, note: "中" },
+        { timeSeconds: 23.038, note: "尺", tatann: true },
+        { timeSeconds: 23.462, note: "中", tatann: true },
         { timeSeconds: 23.967, note: "上" },
 
         { timeSeconds: 25.108, note: "四" },
