@@ -79,7 +79,6 @@ function buildNotes(
       position: m.position,
       type: m.type,
       rowLabel: m.rowLabel,
-      tatann: n.tatann,
     };
   });
 }
