@@ -84,15 +84,31 @@ function buildNotes(
 }
 
 function buildTimedNotes(
-  notes: { timeSeconds: number; note: string }[]
+  notes: { timeSeconds: number; note: string }[],
+  audioOffsetSec: number,
+  bpm: number = BPM
 ): NoteData[] {
-  return notes.map((n, i) => ({
-    id: `timed-${i}`,
-    beat: n.timeSeconds,
-    timeSeconds: n.timeSeconds,
-    note: n.note,
-    type: OPEN_NOTES.includes(n.note) ? "open" : "normal",
-  }));
+  const spb = 60 / bpm;
+
+  return notes.map((n, i) => {
+    const m = NOTE_MAP[n.note] ?? {
+      row: "middle" as StringRow,
+      rowLabel: "中の弦",
+      position: 0,
+      type: "open" as const,
+    };
+
+    return {
+      id: i,
+      beat: (n.timeSeconds - audioOffsetSec) / spb,
+      note: n.note,
+      timeSeconds: n.timeSeconds,
+      row: m.row,
+      position: m.position,
+      type: m.type,
+      rowLabel: m.rowLabel,
+    };
+  });
 }
 
 // ─── TRACKS ───────────────────────────────────────────────────────────────────
@@ -178,7 +194,8 @@ export const TRACKS: TrackDef[] = [
         { timeSeconds: 23.967, note: "上" },
 
         { timeSeconds: 25.108, note: "四" },
-      ]
+      ],
+      0.7
     ),
   },
 ];
